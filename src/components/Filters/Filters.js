@@ -1,5 +1,6 @@
 import React from 'react';
 import NameFilter from './NameFilter';
+import NumberFilter from './NumberFilter';
 import SpecieFilter from './SpecieFilter';
 
 const Filters = (props) => {
@@ -13,6 +14,10 @@ const Filters = (props) => {
         <NameFilter
           handleFilter={props.handleFilter}
           value={props.filterName}
+        />
+        <NumberFilter
+          handleFilter={props.handleFilter}
+          valueNumber={props.filterNumber}
         />
         <SpecieFilter handleFilter={props.handleFilter} />
       </form>

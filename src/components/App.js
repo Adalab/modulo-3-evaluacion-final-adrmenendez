@@ -15,6 +15,7 @@ function App() {
   const [characters, setCharacters] = useState(ls.get('characters', []));
   const [filterName, setFilterName] = useState('');
   const [filterSpecie, setFilterSpecie] = useState('');
+  const [filterNumber, setFilterNumber] = useState(1);
 
   useEffect(() => {
     if (characters.length === 0) {
@@ -33,9 +34,12 @@ function App() {
     if (data.key === 'name') {
       setFilterName(data.value);
       ls.set('filterName', data.value);
-    } else {
+    } else if (data.key === 'specie') {
       setFilterSpecie(data.value);
       ls.set('filterSpecie', data.value);
+    } else {
+      setFilterNumber(data.value);
+      ls.set('filterNumber', data.value);
     }
   };
 
@@ -56,9 +60,18 @@ function App() {
       <Switch>
         <Route exact path='/'>
           <Header />
-          <Filters handleFilter={handleFilter} value={filterName} />
+          <Filters
+            handleFilter={handleFilter}
+            value={filterName}
+            valueNumber={filterNumber}
+          />
           <CharacterList
-            characters={filterCharacters(characters, filterName, filterSpecie)}
+            characters={filterCharacters(
+              characters,
+              filterName,
+              filterSpecie,
+              filterNumber
+            )}
           />
         </Route>
         <Route

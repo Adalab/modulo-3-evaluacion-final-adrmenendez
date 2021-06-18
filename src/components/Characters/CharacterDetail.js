@@ -23,7 +23,7 @@ const CharacterDetail = (props) => {
       <Link to='/' className='detail_back'>
         <p>
           Volver
-          <i class='fas fa-times detail_back--icon' />
+          <i className='fas fa-times detail_back--icon' />
         </p>
       </Link>
       <div className='detail'>
